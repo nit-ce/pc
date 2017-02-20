@@ -1,0 +1,19 @@
+WEDNESDAY PROGRAMMING PROBLEM
+=============================
+
+This repository contains problem statements and test generation
+programs of "Wednesday Programming Problem".  The files in this
+repository are named as follows:
+
+  pcXY.ms  problem statement for Wednesday number XY (in Neatroff).
+  gXY.c    the program that generates the inputs for Wednesday number XY.
+  vXY.c    the tester program for Wednesday number XY.
+
+To obtain and build Neatroff, execute:
+
+  $ make init
+
+To build test generation and verifier programs and problem statements,
+invoke:
+
+  $ make
