@@ -11,9 +11,6 @@
 .fa.ffont HD
 .rn SH SH_
 .de SH
-.\"	sp
-.\"	nr w \\n(.l
-.\"	SH_ "\m[#fff]\h'1n'\\$1\m[\\*[fa.cl]]\h'|0'\v'-1n'\D'P -\\nwu 0 0 -1v \\nwu 0 0 1v'\v'1n'"
 .	ta \\n(.luR
 .	SH_ "\s+9\\$1\s-9"
 .	sp
@@ -27,7 +24,7 @@
 .	nf
 .	cl #f
 .	ft HD
-.	ta 2mL \n(.luR
+.	ta 2mL \n(.lu-1mR
 	\s8\\$2\s0	\s5\v'-1.5i'\\$3\v'1.5i'\s0
 .	cl
 .	ft P

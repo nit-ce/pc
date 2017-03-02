@@ -15,7 +15,7 @@ CC = cc
 CFLAGS = -Wall -O2
 LDFLAGS =
 
-all: pc00.pdf pc01.pdf g01 v01
+all: pc00.pdf pc01.pdf pc02.pdf g01 v01 g02 v02
 
 help:
 	@echo "Wednesday Programming Problem top-level Makefile"

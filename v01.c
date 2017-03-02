@@ -51,7 +51,7 @@ static int submission(FILE *fp)
 int main(int argc, char *argv[])
 {
 	FILE *ifp = fopen(argc > 2 ? argv[1] : ".i", "r");
-	FILE *sfp = fopen(argc > 2 ? argv[2] : ".o", "r");
+	FILE *sfp = fopen(argc > 3 ? argv[2] : ".o", "r");
 	int score;
 	if (!ifp || !sfp)
 		return 1;
