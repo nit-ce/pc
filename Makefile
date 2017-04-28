@@ -10,12 +10,16 @@ SOIN = $(BASE)/soin/soin
 JOIN = $(BASE)/roffjoin/roffjoin
 SHAPE = $(BASE)/shape/shape
 
+BASE = /root/l/neatroff_make/
+
 # Compiler setup
 CC = cc
 CFLAGS = -Wall -O2
 LDFLAGS =
 
-all: pc00.pdf pc01.pdf pc02.pdf g01 v01 g02 v02
+all: pc00.pdf pc01.pdf pc02.pdf pc03.pdf \
+	g01 g02 g03 \
+	v01 v02 v03
 
 help:
 	@echo "Wednesday Programming Problem top-level Makefile"
@@ -45,7 +49,8 @@ v%: v%.o
 	@echo "Generating $@"
 	@cat $< | $(SOIN) | $(SHAPE) | \
 		$(REFER) -m -e -o ct -p ref.bib | $(PIC) | $(TBL) | $(EQN) | \
-		$(ROFF) -meps -mtbl -mkeep -mfa -msrefs | $(POST) -pa4 >$@
+		$(ROFF) -meps -mtbl -mkeep -mfa -msrefs | $(POST) -pa4 | \
+		sed "/^%%Creator:/a%%Title: `sed -n 's/^.*PSTITLE: \(.*\)/\1/p' <$<`" >$@
 
 %.pdf: %.ps
 	@echo "Generating $@"

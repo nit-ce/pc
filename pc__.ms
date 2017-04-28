@@ -64,6 +64,10 @@
 .	<<
 .	fi
 ..
+.de eq
+»\\*[en "\\$1"]«
+..
+.chop eq
 .de tblnf
 .	>>
 .	ft CB

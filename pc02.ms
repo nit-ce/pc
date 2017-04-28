@@ -29,7 +29,7 @@
 .	tblrow "\*[num 4] از \*[num 9]" "\f(FXسختی مسئله\fP"
 .	tblrow "حمیدرضا یزدان‌پناه" "\f(FXبا همکاری\fP"
 .	tblrow "ساعت \*[num 16]    \*[num 1395/12/11]" "\f(FXزمان شروع\fP"
-.	tblrow "ساعت \*[num 16]    \*[num 1395/12/25\0]" "\f(FXزمان پایان\fP"
+.	tblrow "ساعت \*[num 16]    \*[num 1395/12/25]" "\f(FXزمان پایان\fP"
 .tblend
 .nr VS +6
 
