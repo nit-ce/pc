@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define SLEN		200000
+#define SLEN		10000
 
 static char S[SLEN + 1];
 
