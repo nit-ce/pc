@@ -7,19 +7,16 @@ REFER = $(BASE)/neatrefer/refer
 PIC = $(BASE)/troff/pic/pic
 TBL = $(BASE)/troff/tbl/tbl
 SOIN = $(BASE)/soin/soin
-JOIN = $(BASE)/roffjoin/roffjoin
 SHAPE = $(BASE)/shape/shape
-
-BASE = /root/l/neatroff_make/
 
 # Compiler setup
 CC = cc
 CFLAGS = -Wall -O2
 LDFLAGS =
 
-all: pc00.pdf pc01.pdf pc02.pdf pc03.pdf \
-	g01 g02 g03 \
-	v01 v02 v03
+all: pc00.pdf pc01.pdf pc02.pdf pc03.pdf pc04.pdf \
+	g01 g02 g03 g04 \
+	v01 v02 v03 v04
 
 help:
 	@echo "Wednesday Programming Problem top-level Makefile"
