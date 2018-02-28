@@ -8,15 +8,21 @@ PIC = $(BASE)/troff/pic/pic
 TBL = $(BASE)/troff/tbl/tbl
 SOIN = $(BASE)/soin/soin
 SHAPE = $(BASE)/shape/shape
+# Neatroff options
+ROFFOPTS = -mps -meps -mtbl -mkeep -mfa -msrefs
+POSTOPTS = -pa4
+REFROPTS = -m -e -o ct -p ref.bib
+EQNOPTS  = -c '^~"(),'
 
 # Compiler setup
 CC = cc
 CFLAGS = -Wall -O2
-LDFLAGS =
+LDFLAGS = -lm
 
 all: pc00.pdf pc01.pdf pc02.pdf pc03.pdf pc04.pdf pc05.pdf \
-	g01 g02 g03 g04 g05 \
-	v01 v02 v03 v04 v05
+	pc06.pdf \
+	g01 g02 g03 g04 g05 g06 \
+	v01 v02 v03 v04 v05 v06
 
 help:
 	@echo "Wednesday Programming Problem top-level Makefile"
@@ -44,14 +50,15 @@ v%: v%.o
 
 %.ps: %.ms
 	@echo "Generating $@"
-	@cat $< | $(SOIN) | $(SHAPE) | \
-		$(REFER) -m -e -o ct -p ref.bib | $(PIC) | $(TBL) | $(EQN) | \
-		$(ROFF) -meps -mtbl -mkeep -mfa -msrefs | $(POST) -pa4 | \
-		sed "/^%%Creator:/a%%Title: `sed -n 's/^.*PSTITLE: \(.*\)/\1/p' <$<`" >$@
+	@cat $< | $(SOIN) | $(REFER) $(REFROPTS) | $(SHAPE) | \
+		$(PIC) | $(TBL) | $(EQN) $(EQNOPTS) | \
+		$(ROFF) $(ROFFOPTS) | \
+		$(POST) $(POSTOPTS) -t "`sed -n 's/^.*PSTITLE: \(.*\)/\1/p' <$<`" >$@
 
 %.pdf: %.ps
 	@echo "Generating $@"
-	@ps2pdf -dPDFSETTINGS=/prepress -dEmbedAllFonts=true -sFONTPATH=$(BASE)/fonts/ $< $@
+	@ps2pdf -dPDFSETTINGS=/prepress -dEmbedAllFonts=true \
+		-sFONTPATH=$(BASE)/fonts/ -sFONTMAP=$(BASE)/fonts/Fontmap $< $@
 
 clean:
 	rm -f *.ps *.pdf v?? g?? *.o

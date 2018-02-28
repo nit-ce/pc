@@ -26,7 +26,7 @@ static int eval_solution(FILE *fp)
 	for (i = 1; i <= t; i++) {
 		int losing = 0;
 		for (j = 1; j <= 10 && i >= j; j++)
-			losing += !res[i - j][j];
+			losing += !res[i - j][j + MT];
 		for (j = 1; j <= 300; j++) {
 			if (j <= 300 - MT && i >= j)
 				res[i][j] = (losing + !res[i - j][j + MT]) > 0;
@@ -34,9 +34,9 @@ static int eval_solution(FILE *fp)
 				res[i][j] = losing > 0;
 		}
 	}
-	if (res[t - 30][40] && winner == 2)
+	if (res[t - 30][30 + MT] && winner == 2)
 		return 1;
-	if (!res[t - 30][40] && winner == 1)
+	if (!res[t - 30][30 + MT] && winner == 1)
 		return 1;
 	return 0;
 }

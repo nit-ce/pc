@@ -64,10 +64,21 @@
 .	<<
 .	fi
 ..
-.de eq
-»\\*[en "\\$1"]«
+.ds url "\fR\>\m[#348]\\*[ps.url "\\$1" \\?'\\n(.$>1@"\\$2"']\m[]\<\f(FR
+.\" Inline R2L URL
+.de ps.urlr2l
+\R'ps._linkh \\w'\\?'\\n(.$>1@\\$2@\\$1'''\
+\R'ps._linkv \\n(.sp'\
+\\?'\\n(.$>1@\\$2@\\$1'\
+\v'+\\n(.sp*2u/10u'\X'link "\\$1" \\n[ps._linkh] -\\n[ps._linkv]'\v'-\\n(.sp*2u/10u'
 ..
-.chop eq
+.chop ps.urlr2l
+.de urlfa
+\fR\>\m[#348]\\*[ps.urlr2l "\\$1" "\<\f(FR\\$2\fP\>"]\m[]\<\f(FR
+..
+.chop urlfa
+.ds eq "\%»\>\fR\\$1\fP\<«
+.ds uq "»\>\fR\s-1\\$1\s+1\fP\<«
 .de tblnf
 .	>>
 .	ft CB
@@ -85,6 +96,7 @@
 .	tblmac fa.tblfc fa.tblfc
 .	tblrow "\f(HDورودی\fP" "\f(HDخروجی\fP"
 .	tblmac tblnf tblnf
+.	tblrow
 .	tblcol 1
 .	vs -3
 .	ft IO
@@ -141,10 +153,7 @@
 .	br
 .	ev
 ..
-.de un
-\s-1\>\fR\\$1\fP\<\s+1
-..
-.chop un
+.ds un "\s-1\>\fR\\$1\fP\<\s+1
 .de fa.tblcc
 .	>>
 .	ad l
